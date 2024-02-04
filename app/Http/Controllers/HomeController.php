@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Utils\ServerSideTable;
 use App\User;
+use App\School;
 use Auth;
 
 class HomeController extends Controller
@@ -29,10 +30,10 @@ class HomeController extends Controller
         return view('home');
     }
 
-    public function getUsersList(Request $request) {
-        $users = User::all();
+    public function getSchoolList(Request $request) {
+        $schools = School::all();
 
-        $dataTable = new ServerSideTable($users);
+        $dataTable = new ServerSideTable($schools);
         $dataTable->getAjaxTable();
     }
 }

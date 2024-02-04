@@ -31,5 +31,5 @@ Auth::routes();
 
 Route::middleware(['auth', 'verified'])->group(function() {
     Route::get('/home', 'HomeController@index')->name('home');
-    Route::post('/users-list', 'HomeController@getUsersList')->name('home');
+    Route::post('/schools-list', 'HomeController@getSchoolList')->name('home');
 });

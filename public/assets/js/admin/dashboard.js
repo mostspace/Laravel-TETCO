@@ -2,7 +2,7 @@
 var AdminDashboard = function() {
 
 	var initTable1 = function() {
-		var table = $('#usersTable');
+		var table = $('#schoolTable');
 
 		// begin first table
 		table.DataTable({
@@ -11,18 +11,17 @@ var AdminDashboard = function() {
 			processing: true,
 			serverSide: true,
 			ajax: {
-				url: '/users-list',
+				url: '/schools-list',
 				type: 'POST',
 				data: {
 					// parameters for custom backend script demo
 					columnsDef: [
-						'id', 'name', 'email'],
+						'id', 'name'],
 				},
 			},
 			columns: [
 				{data: 'id'},
 				{data: 'name'},
-				{data: 'email'},
 			]
 		});
 	};

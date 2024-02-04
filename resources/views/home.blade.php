@@ -17,57 +17,24 @@
             <!--begin::Card-->
             <div class="card card-custom mb-15">
                 <!--begin::Card header-->
-                <div class="card-header card-header-tabs-line nav-tabs-line-3x">
-                    <!--begin::Toolbar-->
-                    <div class="card-toolbar">
-                        <ul class="nav nav-tabs nav-bold nav-tabs-line nav-tabs-line-3x">
-                            <!--begin::Item-->
-                            <li class="nav-item mr-3">
-                                <a class="nav-link active" data-toggle="tab" href="#tab-sns-list">
-                                    <span class="nav-text font-size-lg">SNS</span>
-                                </a>
-                            </li>
-                            <!--end::Item-->
-                        </ul>
+                <div class="card-header">
+                    <div class="card-title">
+                        <h3 class="card-label">School List</h3>
                     </div>
-                    <!--end::Toolbar-->
                 </div>
                 <!--end::Card header-->
                 <!--begin::Card body-->
                 <div class="card-body">
-                    <form class="form" id="kt_form">
-                        <div class="tab-content">
-                            <!--begin::Tab-->
-                            <div class="tab-pane show active px-7" id="tab-sns-list" role="tabpanel">
-                               <!--begin: Datatable-->
-                               <table class="table table-bordered table-hover table-checkable mt-10" id="usersTable">
-                                    <thead>
-                                        <tr>
-                                            <th>ID</th>
-                                            <th>Name</th>
-                                            <th>Email</th>
-                                        </tr>
-                                    </thead>
-                                </table>
-                                <!--end: Datatable-->
-                            </div>
-                            <!--end::Tab-->
-
-                            <!--begin::Tab-->
-                            <div class="tab-pane px-7" id="tab-promotion-list" role="tabpanel">
-                               <!--begin: Datatable-->
-                               <!-- <table class="table table-bordered table-hover table-checkable mt-10" id="promotionTable">
-                                    <thead>
-                                        <tr>
-                                            <th>ID</th>
-                                        </tr>
-                                    </thead>
-                                </table> -->
-                                <!--end: Datatable-->
-                            </div>
-                            <!--end::Tab-->
-                        </div>
-                    </form>
+                    <!--begin: Datatable-->
+                    <table class="table table-bordered table-hover table-checkable mt-10" id="schoolTable">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Name</th>
+                            </tr>
+                        </thead>
+                    </table>
+                    <!--end: Datatable-->
                 </div>
                 <!--begin::Card body-->
             </div>
