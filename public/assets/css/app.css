@@ -1,0 +1,70 @@
+body {
+    background-color: #ffffff !important;
+}
+
+.fs-2 {
+    font-size: 40px !important;
+}
+.fs-5 {
+    font-size: 24px !important;
+}
+.fs-6 {
+    font-size: 20px !important;
+}
+.fs-7 {
+    font-size: 16px !important;
+}
+.fs-8 {
+    font-size: 14px !important;
+}
+.fs-9 {
+    font-size: 12px !important;
+}
+
+.login-right-bg {
+    background-image: url('../media/img/login-bg.png');
+    background-repeat: no-repeat;
+    background-position: center;
+}
+.bg-main {
+    background-color: #1e776a !important;
+    border-color: #1e776a !important;
+}
+.main-text-color {
+    color: #1e776a !important;
+}
+
+#kt_aside {
+    border-right: 1px solid #f7f7f7;
+}
+
+#kt_brand {
+    border-bottom: 1px solid #f7f7f7;
+    padding-top: 45px;
+    padding-bottom: 35px;
+}
+
+.menu-item .menu-icon {
+    color: #424242;
+}
+
+.aside-menu .menu-nav > .menu-item:hover {
+    background-color: #e0f2f0;
+    color: #1e776a;
+}
+
+.aside-menu .menu-nav > .menu-item:hover .menu-icon {
+    color: #1e776a;
+}
+
+.aside-menu .menu-nav .menu-item > .menu-heading:hover, .aside-menu .menu-nav .menu-item > .menu-link:hover {
+    color: #1e776a;
+}
+
+a {
+    color: #424242;
+}
+
+.dropdown-toggle::after {
+    display: none;
+}
