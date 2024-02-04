@@ -108,31 +108,31 @@
 							<!--begin::Menu Nav-->
 							<ul class="menu-nav position-relative h-100 pb-0" id="asideMenu">
 								<li class="menu-item" aria-haspopup="true">
-									<a href="#" class="menu-link">
+									<a href="/home" class="menu-link">
                                        <i class="menu-icon fa-solid fa-house"></i>
 										<span class="menu-text font-weight-bolder">Home</span>
 									</a>
 								</li>
 								<li class="menu-item" aria-haspopup="true">
-									<a href="#" class="menu-link">
+									<a href="/schools-actual-price" class="menu-link">
                                         <i class="menu-icon fa-solid fa-calendar-days"></i>
 										<span class="menu-text font-weight-bolder">Schools Actual Price</span>
 									</a>
 								</li>
 								<li class="menu-item" aria-haspopup="true">
-									<a href="#" class="menu-link">
+									<a href="/price-limit" class="menu-link">
                                         <i class="menu-icon fa-solid fa-money-bill"></i>
 										<span class="menu-text font-weight-bolder">School Price Limit</span>
 									</a>
 								</li>
 								<li class="menu-item" aria-haspopup="true">
-									<a href="#" class="menu-link">
+									<a href="/discount-matrix" class="menu-link">
                                         <i class="menu-icon fa-solid fa-message-lines"></i>
 										<span class="menu-text font-weight-bolder">Discount Matrix</span>
 									</a>
 								</li>
 								<li class="menu-item position-absolute bottom-0 w-100 bg-secondary py-3 border-top-secondary" aria-haspopup="true">
-                                    <a href="#" class="menu-link dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    <a href="javascript:void(0)" class="menu-link dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                         <i class="menu-icon fa-regular fa-circle-user"></i>
                                         <span class="menu-text font-weight-bold">{{ Auth::user()->name }}</span>
                                     </a>

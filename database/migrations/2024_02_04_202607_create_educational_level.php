@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateSchoolTable extends Migration
+class CreateEducationalLevel extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,10 @@ class CreateSchoolTable extends Migration
      */
     public function up()
     {
-        Schema::create('schools', function (Blueprint $table) {
+        Schema::create('educational_level', function (Blueprint $table) {
             $table->id();
-            $table->string('school_name');
-            $table->timestamps();
+            $table->string('level_name');
+            $table->decimal('price_limit', 8, 2); // 8 total digits, 2 decimal places
         });
     }
 
@@ -27,6 +27,6 @@ class CreateSchoolTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('schools');
+        Schema::dropIfExists('educational_level');
     }
 }
