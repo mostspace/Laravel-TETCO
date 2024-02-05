@@ -146,38 +146,9 @@
                                         <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
                                             @csrf
                                         </form>
-                                        <!-- <a class="dropdown-item" href="#">Another action</a>
-                                        <a class="dropdown-item" href="#">Something else here</a>
-                                        <div class="dropdown-divider"></div>
-                                        <a class="dropdown-item" href="#">Separated link</a> -->
                                     </div>
 								</li>
 							</ul>
-
-                            <!-- <div>
-                                <a href="#" class="">
-                                    <i class="fa-regular fa-circle-user"></i>
-                                    <span class="menu-text text-dark">{{ Auth::user()->name }}</span>
-
-                                    <div class="dropdown-menu p-0 m-0 dropdown-menu-right dropdown-menu-anim-up dropdown-menu-lg logout-dropdown">
-                                        <div class="d-flex flex-column flex-center py-10 bgi-size-cover bgi-no-repeat rounded">
-                                            <h4 class="text-white font-weight-bold">{{ Auth::user()->name }}</h4>
-                                            <div class="">
-                                                <a href="route('logout')" class="btn btn-success btn-md font-weight-bold font-size-md mt-2"
-                                                    onclick="event.preventDefault();
-                                                                document.getElementById('logout-form').submit();">
-                                                    {{ __('Logout') }}
-                                                </a>
-
-                                                <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-                                                    @csrf
-                                                </form>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </a>
-                            </div> -->
-							<!--end::Menu Nav-->
 						</div>
 						<!--end::Menu Container-->
 					</div>
@@ -259,30 +230,38 @@
 		@yield('add_js')
 		
         <script>
+			// Menu active
 			const url = window.location.href;
 			const pathSegments = url.split('/');
-			const secondPathSegment = pathSegments[3] + '/' + pathSegments[4];
+			const secondPathSegment = pathSegments[3];
 
 			$(document).ready(function() {
 				switch (secondPathSegment) {
-					case "admin/undefined":
-						$("#adminDashboardHeader").children().eq(0).addClass("menu-item-open");
+					case "home":
+						$("#asideMenu").children().eq(0).addClass("menu-item-open");
 						break;
-					case "admin/promotion-printing":
-						$("#adminDashboardHeader").children().eq(1).addClass("menu-item-open");
+					case "school":
+						$("#asideMenu").children().eq(0).addClass("menu-item-open");
 						break;
-					case "admin/users-management":
-						$("#adminDashboardHeader").children().eq(2).addClass("menu-item-open");
+					case "schools-actual-price":
+						$("#asideMenu").children().eq(1).addClass("menu-item-open");
+						break;
+					case "school-price-limit":
+						$("#asideMenu").children().eq(2).addClass("menu-item-open");
+						break;
+					case "discount-matrix":
+						$("#asideMenu").children().eq(3).addClass("menu-item-open");
 						break;
 					default:
-						$("#adminDashboardHeader").children().find("menu-item").removeClass("menu-item-open");
+						// Remove the active class from all menu items
+						$("#asideMenu").children().removeClass("menu-item-open");
 				}
 
-				$("#asideMenu").on("click", ".menu-item", function() {
-					$(this).addClass("menu-active");
-				});
+				// Set color for the active menu item
+				$(".menu-item-open").children().find("i, span").css('color', '#1e776a');
 			});
 		</script>
+
 	</body>
 	<!--end::Body-->
 </html>

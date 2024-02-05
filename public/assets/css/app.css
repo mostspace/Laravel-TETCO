@@ -85,3 +85,7 @@ a {
 #discountMatrixTable_length, #discountMatrixTable_paginate {
     display: none !important;
 }
+.menu-item-open {
+    background-color: #e0f2f0;
+    color: #1e776a;
+}
