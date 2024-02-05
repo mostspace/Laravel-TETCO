@@ -82,10 +82,7 @@ class ServerSideTable {
         }
     
         $columnsDefault = [
-            'id'     => true,
-            'name'      => true,
-            // 'email'      => true,
-            // 'created_at'      => true,
+            'Actions' => true,
         ];
     
         if ( isset( $_REQUEST['columnsDef'] ) && is_array( $_REQUEST['columnsDef'] ) ) {

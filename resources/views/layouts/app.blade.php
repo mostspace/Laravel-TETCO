@@ -252,6 +252,8 @@
 		<!--end::Page Scripts-->
         <!--begin::Page Vendors(used by this page)-->
         <script src="{{ asset('assets/plugins/custom/datatables/datatables.bundle.js') }}"></script>
+        <script src="{{ asset('assets/js/features/bootstrap-notify.js') }}"></script>
+        <script src="{{ asset('assets/js/notification.js') }}"></script>
         <!--end::Page Vendors-->
 
 		@yield('add_js')

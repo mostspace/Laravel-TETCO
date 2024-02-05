@@ -88,6 +88,27 @@ class SchoolController extends Controller
         $dataTable->getAjaxTable();
     }
 
+    public function updatePriceLimit(Request $request) {
+        try {
+            $educationalLevelId = $request->input('id');
+            $newPriceLimit = $request->input('price_value');
+        
+            // Retrieve the educational level by ID
+            $educationalLevel = EducationalLevel::find($educationalLevelId);
+    
+            if ($educationalLevel) {
+                // Update the price_limit field
+                $educationalLevel->update(['price_limit' => $newPriceLimit]);
+        
+                return response()->json(['result' => 'success', 'message' => 'Price limit updated successfully']);
+            }
+            return response()->json(['result' => 'warning', 'message' => 'Educational level not found'], 404);
+        } catch (\Exception $e) {
+            return response()->json(['result' => 'danger', 'message' => 'An error occurred.'], 500);
+        }
+    }
+    
+
     // Add Grade
     public function addGrade(Request $request) {
         $formData = $request->input('data');
