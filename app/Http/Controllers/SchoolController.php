@@ -44,8 +44,8 @@ class SchoolController extends Controller
                         ->get();
 
         foreach ($grades as $grade) {
-            $grade->citizen_final_price = $this->calculateFinalPriceWithVat($grade->price_limit, true, $grade->seats);
-            $grade->non_citizen_final_price = $this->calculateFinalPriceWithVat($grade->price_limit, false, $grade->seats);
+            $grade->citizen_final_price = $this->calculateFinalPriceWithVat($grade->price_limit, $grade->actual_price, true, $grade->seats);
+            $grade->non_citizen_final_price = $this->calculateFinalPriceWithVat($grade->price_limit, $grade->actual_price, false, $grade->seats);
         }
 
         $dataTable = new ServerSideTable($grades);
@@ -152,7 +152,7 @@ class SchoolController extends Controller
     }
 
     // =======================================  Discount Matrix  ===================================================
-    
+
     public function discountMatrix() {
         return view('discount-matrix.index');
     }
@@ -220,7 +220,7 @@ class SchoolController extends Controller
 
     // =======================================  Caculate Final Price With VAT  ===================================================
 
-    public function calculateFinalPriceWithVat($baseLimit, $isCitizen, $numSeats)
+    public function calculateFinalPriceWithVat($priceLimit, $actualPrice, $isCitizen, $numSeats)
     {
         // Discount Rate
         $discountMatrix = DiscountMatrix::all();
@@ -236,17 +236,16 @@ class SchoolController extends Controller
         }
 
         // Apply discount to the base limit
-        $discountedPrice = $baseLimit * (1 - $discountRate);
+        $discountedPrice = $actualPrice * (1 - $discountRate);
 
         // Add VAT for non-Citizens, if applicable
         $vatMultiplier = $isCitizen ? 1.0 : 1.15;
         $priceWithVat = $discountedPrice * $vatMultiplier;
 
         // Enforce the ministry limit strictly for both citizens and non-citizens
-        $finalPrice = min($priceWithVat, $baseLimit);
+        $finalPrice = min($priceWithVat, $priceLimit);
 
         // Format the final price with two decimal places
         return number_format($finalPrice, 2);
     }
-
 }

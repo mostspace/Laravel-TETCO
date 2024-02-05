@@ -51,7 +51,6 @@ Route::middleware(['auth', 'verified'])->group(function() {
     Route::post('/discount-matrix', 'SchoolController@getDiscountMatrix');
     Route::post('/update-discount-matrix', 'SchoolController@updateDiscountMatrix');
 
-
     // Add Grade
     Route::post('/add-grade', 'SchoolController@addGrade');
 });
