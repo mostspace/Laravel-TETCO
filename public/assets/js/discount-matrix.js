@@ -10,6 +10,9 @@ var AdminDashboard = function() {
 			searchDelay: 500,
 			processing: true,
 			serverSide: true,
+			paging: true,
+			info: false,
+            searching: false,
 			ajax: {
 				url: '/discount-matrix',
 				type: 'POST',
