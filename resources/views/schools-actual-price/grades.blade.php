@@ -89,6 +89,12 @@
                     </div>
 
                     <div class="form-group">
+                        <label>Grade</label>
+                        <input type="number" class="form-control" placeholder="Enter Grade..." name="grade" />
+                        <!-- <span class="form-text text-muted">We'll never share your email with anyone else.</span> -->
+                    </div>
+
+                    <div class="form-group">
                         <label for="citizenshipStatus">Citizenship Status</label>
                         <select class="form-control" id="citizenshipStatus" name="citizen_status">
                             <option>Citizen</option>
@@ -108,6 +114,13 @@
                         </div>
                         <span class="form-text text-muted">Some help text goes here</span>
                     </div> -->
+
+
+                    <div class="form-group">
+                        <label>Actual Price</label>
+                        <input type="text" class="form-control" placeholder="Enter available seats" name="actual_price" />
+                        <!-- <span class="form-text text-muted">We'll never share your email with anyone else.</span> -->
+                    </div>
 
                     <div class="form-group">
                         <label>Available Seats</label>

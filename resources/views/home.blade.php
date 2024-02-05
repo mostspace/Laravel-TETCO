@@ -2,7 +2,7 @@
 
 @section('bread_crumb')
 <!--begin::Page Title-->
-<h5 class="text-dark font-weight-bolder mt-2 mb-2 mr-5 font-white">アクセス解析</h5>
+<h5 class="text-dark font-weight-bolder mt-2 mb-2 mr-5 font-white">Home</h5>
 <!--end::Page Title-->
 @endsection
 
