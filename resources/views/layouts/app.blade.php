@@ -133,16 +133,17 @@
 								</li>
 								<li class="menu-item position-absolute bottom-0 w-100 bg-secondary py-3 border-top-secondary" aria-haspopup="true">
                                     <a href="javascript:void(0)" class="menu-link dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                        <i class="menu-icon fa-regular fa-circle-user"></i>
+                                        <i class="menu-icon fa-regular fa-circle-user fs-6"></i>
                                         <span class="menu-text font-weight-bold">{{ Auth::user()->name }}</span>
                                     </a>
-                                    <div class="dropdown-menu" style="">
+                                    <div class="dropdown-menu" style="width: 100%">
+                                        <a class="dropdown-item" href="/register">Register User</a>
+                                        <div class="dropdown-divider"></div>
                                         <a href="route('logout')" class="dropdown-item"
                                             onclick="event.preventDefault();
                                                         document.getElementById('logout-form').submit();">
                                             {{ __('Logout') }}
                                         </a>
-
                                         <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
                                             @csrf
                                         </form>

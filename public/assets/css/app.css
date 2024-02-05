@@ -89,3 +89,24 @@ a {
     background-color: #e0f2f0;
     color: #1e776a;
 }
+
+#kt_aside_menu {
+    display: grid;
+    grid-template-rows: 1fr auto;
+}
+
+.form-control:focus {
+    border-color: #1e776a;
+}
+
+.dataTables_wrapper .dataTable th.sorting_asc, .dataTables_wrapper .dataTable td.sorting_asc, .dataTables_wrapper .dataTable th.sorting_desc, .dataTables_wrapper .dataTable td.sorting_desc, .dataTables_wrapper .dataTable th.sorting_asc:before, .dataTables_wrapper .dataTable td.sorting_asc:before, a:hover {
+    color: #1e776a !important;
+}
+
+.dataTables_wrapper .dataTables_paginate .pagination .page-item.active > .page-link, .dataTables_wrapper .dataTables_paginate .pagination .page-item:hover:not(.disabled) > .page-link {
+    background-color: #1e776a !important;
+}
+
+#kt_aside_toggle svg path {
+    fill: #1e776a !important;
+}
