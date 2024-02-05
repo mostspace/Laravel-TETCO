@@ -31,6 +31,7 @@
                             <tr>
                                 <th>Educational Level</th>
                                 <th>Price Limit</th>
+                                <th>Actions</th>
                             </tr>
                         </thead>
                     </table>
