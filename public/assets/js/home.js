@@ -16,22 +16,22 @@ var AdminDashboard = function() {
 				data: {
 					// parameters for custom backend script demo
 					columnsDef: [
-						'id', 'name'],
+						'id', 'school_name'],
 				},
 			},
 			columns: [
 				{data: 'id'},
-				{data: 'name'},
+				{data: 'school_name'},
 			],
 			columnDefs: [
 				{
 					targets: 1,
-					data: "name",
+					data: "school_name",
 					render: function(data, type, row, meta) {
 						if(type === 'display') {
-							return '<a href="/school/' + row.id + '">' + row.name + '</a>';
+							return '<a href="/school/' + row.id + '">' + row.school_name + '</a>';
 						} else if (type === 'sort' || type === 'type') {
-							return row.name;
+							return row.school_name;
 						}
 					}
 				}

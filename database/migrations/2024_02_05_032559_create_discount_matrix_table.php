@@ -17,7 +17,7 @@ class CreateDiscountMatrixTable extends Migration
             $table->id();
             $table->integer('from');
             $table->integer('to');
-            $table->decimal('applied_discount', 8, 2);
+            $table->float('applied_discount');
             $table->timestamps();
         });
     }

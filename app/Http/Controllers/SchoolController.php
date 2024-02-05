@@ -14,7 +14,21 @@ use Auth;
 
 class SchoolController extends Controller
 {
-
+    /**
+     * Create a new controller instance.
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+    /**
+     * Show the application dashboard.
+     *
+     * @return \Illuminate\Contracts\Support\Renderable
+     */
+    
     // =======================================  Home  ===================================================
 
     public function home()
@@ -30,14 +44,14 @@ class SchoolController extends Controller
     }
 
     public function schoolFinalPrice(Request $request, $school_id) {
-        $school = School::where('id', $school_id)->first('name');
+        $school = School::where('id', $school_id)->first('school_name');
 
         return view('school-final-price', compact('school_id', 'school'));
     }
 
     public function getGradeFinalPrice(Request $request, $school_id)
     {
-        $grades = Grade::select('B.level_name', 'B.price_limit', 'A.grade', 'A.seats', 'A.actual_price', 'A.citizenship_status')
+        $grades = Grade::select('B.level_name', 'B.price_limit', 'A.grade', 'A.seats', 'A.actual_price')
                         ->from('grades as A')
                         ->leftJoin('educational_levels as B', 'A.edu_level', '=', 'B.id')
                         ->where('A.school_id', '=', $school_id)
@@ -61,7 +75,7 @@ class SchoolController extends Controller
 
     public function schoolGrades(Request $request, $school_id)
     {
-        $school = School::where('id', $school_id)->first('name');
+        $school = School::where('id', $school_id)->first('school_name');
 
         return view('schools-actual-price.actual-price', compact('school_id', 'school'));
     }

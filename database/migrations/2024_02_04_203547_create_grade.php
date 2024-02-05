@@ -13,15 +13,13 @@ class CreateGrade extends Migration
      */
     public function up()
     {
-        Schema::create('grade', function (Blueprint $table) {
+        Schema::create('grades', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('school_id');
+            $table->integer('school_id');
             $table->string('edu_level');
-            $table->unsignedBigInteger('grade');
-            $table->int('citizenship_status');
-            $table->unsignedBigInteger('seats');
+            $table->integer('grade');
+            $table->integer('seats');
             $table->decimal('actual_price', 8, 2);
-            $table->unsignedBigInteger('fee');
             $table->timestamps();
         });
     }
@@ -33,6 +31,6 @@ class CreateGrade extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('grade');
+        Schema::dropIfExists('grades');
     }
 }

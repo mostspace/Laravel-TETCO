@@ -14,6 +14,4 @@ class DiscountMatrix extends Model
         'to',
         'applied_discount'
     ];
-
-    public $timestamps = false;
 }
