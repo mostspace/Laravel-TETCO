@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Utils\ServerSideTable;
 use App\User;
 use App\School;
+use App\DiscountMatrix;
 use App\EducationalLevel;
 use App\Grade;
 use Auth;
@@ -107,24 +108,36 @@ class SchoolController extends Controller
             return response()->json(['result' => 'danger', 'message' => 'An error occurred.'], 500);
         }
     }
+
+    // Discount Matrix
+    public function discountMatrix() {
+        return view('discount-matrix.index');
+    }
+
+    public function getDiscountMatrix(Request $request) {
+        $data = DiscountMatrix::all();
+
+        $dataTable = new ServerSideTable($data);
+        $dataTable->getAjaxTable();
+    }
     
 
     // Add Grade
-    public function addGrade(Request $request) {
-        $formData = $request->input('data');
+    // public function addGrade(Request $request) {
+    //     $formData = $request->input('data');
 
-        $edu_level = EducationalLevel::where('level_name', $formData['edu_level'])->get();
+    //     $edu_level = EducationalLevel::where('level_name', $formData['edu_level'])->get();
 
-        dd($edu_level);
+    //     dd($edu_level);
 
-        $grade = new Grade;
+    //     $grade = new Grade;
 
-        $grade->school_id = $request->input('school_id');
-        $grade->edu_level = $edu_level->id;
-        $grade->school_id = $school_id;
-        $grade->school_id = $school_id;
+    //     $grade->school_id = $request->input('school_id');
+    //     $grade->edu_level = $edu_level->id;
+    //     $grade->school_id = $school_id;
+    //     $grade->school_id = $school_id;
 
-    }
+    // }
 
 
     // Algorithm

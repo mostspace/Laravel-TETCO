@@ -78,6 +78,6 @@ a {
 .price_limit_value {
     border: none;
 }
-.price_limit_value:focus, .price_limit_value:hover {
+.price_limit_value:focus {
     border: 1px solid black;
 }
