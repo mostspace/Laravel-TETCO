@@ -81,7 +81,6 @@ class SchoolController extends Controller
     }
 
     public function getSchoolGrades(Request $request, $school_id) {
-        // $grades = Grade::where('school_id', $school_id)->get();
         $grades = Grade::select('B.level_name', 'A.id', 'A.grade', 'A.seats', 'A.actual_price')
                     ->from('grades as A')
                     ->leftJoin('educational_levels as B', 'A.edu_level', '=', 'B.id')
@@ -183,8 +182,8 @@ class SchoolController extends Controller
             if ($request->input('target') == "from" or $request->input('target') == "to") {
                 $request->validate([
                     'id' => 'required|numeric',
-                    'target' => 'required|string', // Add appropriate validation rules
-                    'value' => 'required|int', // Add appropriate validation rules
+                    'target' => 'required|string',
+                    'value' => 'required|int',
                 ]);
             } else {
                 $request->validate([
@@ -213,24 +212,6 @@ class SchoolController extends Controller
         }
     }
     
-
-    // Add Grade
-    // public function addGrade(Request $request) {
-    //     $formData = $request->input('data');
-
-    //     $edu_level = EducationalLevel::where('level_name', $formData['edu_level'])->get();
-
-    //     dd($edu_level);
-
-    //     $grade = new Grade;
-
-    //     $grade->school_id = $request->input('school_id');
-    //     $grade->edu_level = $edu_level->id;
-    //     $grade->school_id = $school_id;
-    //     $grade->school_id = $school_id;
-
-    // }
-
 
     // =======================================  Caculate Final Price With VAT  ===================================================
 

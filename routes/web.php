@@ -30,6 +30,7 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::middleware(['auth', 'verified'])->group(function() {
+    // Home
     Route::get('/home', 'SchoolController@home');
     Route::post('/schools-list', 'SchoolController@getSchoolList');
     Route::get('/school/{school_id}', 'SchoolController@schoolFinalPrice');
@@ -50,7 +51,4 @@ Route::middleware(['auth', 'verified'])->group(function() {
     Route::get('/discount-matrix', 'SchoolController@discountMatrix');
     Route::post('/discount-matrix', 'SchoolController@getDiscountMatrix');
     Route::post('/update-discount-matrix', 'SchoolController@updateDiscountMatrix');
-
-    // Add Grade
-    Route::post('/add-grade', 'SchoolController@addGrade');
 });
