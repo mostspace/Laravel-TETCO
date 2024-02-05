@@ -38,7 +38,7 @@
 		<div id="kt_header_mobile" class="header-mobile align-items-center header-mobile-fixed">
 			<!--begin::Logo-->
 			<a href="/">
-				<img class="w-50" alt="Logo" src="{{ asset('assets/media/logos/logo.png') }}" />
+				<img class="w-25" alt="Logo" src="{{ asset('assets/media/logos/logo.png') }}" />
 			</a>
 			<!--end::Logo-->
 			<!--begin::Toolbar-->
@@ -120,7 +120,7 @@
 									</a>
 								</li>
 								<li class="menu-item" aria-haspopup="true">
-									<a href="/price-limit" class="menu-link">
+									<a href="/school-price-limit" class="menu-link">
                                         <i class="menu-icon fa-solid fa-money-bill"></i>
 										<span class="menu-text font-weight-bolder">School Price Limit</span>
 									</a>
@@ -187,6 +187,30 @@
 
 				<!--begin::Wrapper-->
 				<div class="d-flex flex-column flex-row-fluid wrapper" id="kt_wrapper">
+                    <!--begin::Header-->
+					<div id="kt_header" class="header header-fixed admin-header">
+						<!--begin::Container-->
+						<div class="container-fluid d-flex align-items-stretch justify-content-between">
+							<!--begin::Header Menu Wrapper-->
+							<div class="header-menu-wrapper header-menu-wrapper-left" id="kt_header_menu_wrapper">
+								<!--begin::Header Menu-->
+								<div id="kt_header_menu" class="header-menu header-menu-mobile header-menu-layout-default">
+									<!--begin::Header Nav-->
+									<ul class="menu-nav">
+										<li class="menu-item">
+											@yield('bread_crumb')
+										</li>
+									</ul>
+									<!--end::Header Nav-->
+								</div>
+								<!--end::Header Menu-->
+							</div>
+							<!--end::Header Menu Wrapper-->
+						</div>
+						<!--end::Container-->
+					</div>
+					<!--end::Header-->
+
                     @yield('content')
 				</div>
 				<!--end::Wrapper-->

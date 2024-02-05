@@ -18,8 +18,9 @@ class CreateGrade extends Migration
             $table->unsignedBigInteger('school_id');
             $table->string('edu_level');
             $table->unsignedBigInteger('grade');
+            $table->int('citizenship_status');
             $table->unsignedBigInteger('seats');
-            $table->decimal('price_limit', 8, 2);
+            $table->decimal('actual_price', 8, 2);
             $table->unsignedBigInteger('fee');
             $table->timestamps();
         });

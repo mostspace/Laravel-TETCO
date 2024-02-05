@@ -30,9 +30,20 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::middleware(['auth', 'verified'])->group(function() {
-    Route::get('/home', 'HomeController@index')->name('home');
-    Route::post('/schools-list', 'HomeController@getSchoolList')->name('home');
+    Route::get('/home', 'SchoolController@home');
+    Route::post('/schools-list', 'SchoolController@getSchoolList');
+    Route::get('/school/{school_id}', 'SchoolController@schoolFinalPrice');
+    Route::post('/school/{school_id}', 'SchoolController@getGradeFinalPrice');
 
     // Schools Actual Price
-    Route::get('/schools-actual-price', 'SchoolController@getSchoolList')->name('school.list');
+    Route::get('/schools-actual-price', 'SchoolController@schoolsActualPrice')->name('school.list');
+    Route::get('/schools-actual-price/{school_id}', 'SchoolController@schoolGrades')->name('school.grade');
+    Route::post('/school-grade/{school_id}', 'SchoolController@getSchoolGrades');
+
+    // School Price Limit
+    Route::get('/school-price-limit', 'SchoolController@schoolPriceLimit');
+    Route::post('/school-price-limit', 'SchoolController@getSchoolPriceLimit')->name('school.price_limit');
+
+    // Add Grade
+    Route::post('/add-grade', 'SchoolController@addGrade');
 });
