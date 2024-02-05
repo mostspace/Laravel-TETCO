@@ -35,32 +35,13 @@ var AdminDashboard = function() {
 							return row.price_limit;
 						}
 					}
-				},
-				// {
-				// 	targets: 2,
-				// 	title: 'Actions',
-				// 	orderable: false,
-				// 	render: function(data, type, full, meta) {
-				// 		return '\
-				// 			<a href="javascript:;" class="btn btn-sm btn-clean btn-icon" title="Edit details">\
-				// 				<i class="la la-edit"></i>\
-				// 			</a>\
-				// 			<a href="javascript:;" class="btn btn-sm btn-clean btn-icon" title="Delete">\
-				// 				<i class="la la-trash"></i>\
-				// 			</a>\
-				// 		';
-				// 	},
-				// },
+				}
 			],
 		});
 	};
 
     var initMain = function () {
-        $("#priceLimitTable").on("click", ".edit_value", function() {
-            console.log($(this).val());
-        });
-
-         // Keydown event handler for elements with class 'edit_value'
+        // Keydown event handler for elements with class 'edit_value'
         $("#priceLimitTable").on("keydown", ".edit_value", function(event) {
             // Check if the key pressed is Enter (key code 13)
             if (event.keyCode === 13) {

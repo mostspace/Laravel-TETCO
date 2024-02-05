@@ -2,7 +2,7 @@
 
 @section('bread_crumb')
 <!--begin::Page Title-->
-<h5 class="text-dark font-weight-bolder mt-2 mb-2 mr-5 font-white">Grades</h5>
+<h5 class="text-dark font-weight-bolder mt-2 mb-2 mr-5 font-white">Actual Price</h5>
 <!--end::Page Title-->
 @endsection
 
@@ -24,9 +24,8 @@
                     </div>
                     <div class="card-toolbar">
                         <!--begin::Button-->
-                        <a href="#" class="btn btn-primary font-weight-bolder" id="newGrade" data-toggle="modal" data-target="#dataModal">
+                        <!-- <a href="#" class="btn btn-primary font-weight-bolder" id="newGrade" data-toggle="modal" data-target="#dataModal">
                             <span class="svg-icon svg-icon-md">
-                                <!--begin::Svg Icon | path:assets/media/svg/icons/Design/Flatten.svg-->
                                 <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
                                     <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
                                         <rect x="0" y="0" width="24" height="24"></rect>
@@ -34,9 +33,8 @@
                                         <path d="M8.8012943,7.00241953 C9.83837775,5.20768121 11.7781543,4 14,4 C17.3137085,4 20,6.6862915 20,10 C20,12.2218457 18.7923188,14.1616223 16.9975805,15.1987057 C16.9991904,15.1326658 17,15.0664274 17,15 C17,10.581722 13.418278,7 9,7 C8.93357256,7 8.86733422,7.00080962 8.8012943,7.00241953 Z" fill="#000000" opacity="0.3"></path>
                                     </g>
                                 </svg>
-                                <!--end::Svg Icon-->
                             </span>New Grade
-                        </a>
+                        </a> -->
                         <!--end::Button-->
                     </div>
                 </div>
@@ -44,7 +42,7 @@
                 <!--begin::Card body-->
                 <div class="card-body">
                     <!--begin: Datatable-->
-                    <table class="table table-bordered table-hover table-checkable mt-10" id="gradeTable">
+                    <table class="table table-bordered table-hover table-checkable mt-10" id="actualPriceTable">
                         <thead>
                             <tr>
                                 <th>Educational Level</th>
@@ -95,28 +93,6 @@
                     </div>
 
                     <div class="form-group">
-                        <label for="citizenshipStatus">Citizenship Status</label>
-                        <select class="form-control" id="citizenshipStatus" name="citizen_status">
-                            <option>Citizen</option>
-                            <option>Non-citizen</option>
-                        </select>
-                    </div>
-
-                    <!-- <div class="form-group">
-                        <label>Citizenship Status</label>
-                        <div class="radio-inline">
-                            <label class="radio">
-                            <input type="radio" name="citizen_status" />
-                            <span></span>Citizen</label>
-                            <label class="radio">
-                            <input type="radio" name="citizen_status" />
-                            <span></span>Non-citizen</label>
-                        </div>
-                        <span class="form-text text-muted">Some help text goes here</span>
-                    </div> -->
-
-
-                    <div class="form-group">
                         <label>Actual Price</label>
                         <input type="text" class="form-control" placeholder="Enter available seats" name="actual_price" />
                         <!-- <span class="form-text text-muted">We'll never share your email with anyone else.</span> -->
@@ -128,7 +104,6 @@
                         <!-- <span class="form-text text-muted">We'll never share your email with anyone else.</span> -->
                     </div>
                 </form>
-                
             </div>
             <div class="modal-footer">
                 <button type="button" id="addGrade" class="btn btn-primary font-weight-bold">Save changes</button>

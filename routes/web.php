@@ -39,6 +39,7 @@ Route::middleware(['auth', 'verified'])->group(function() {
     Route::get('/schools-actual-price', 'SchoolController@schoolsActualPrice')->name('school.list');
     Route::get('/schools-actual-price/{school_id}', 'SchoolController@schoolGrades')->name('school.grade');
     Route::post('/school-grade/{school_id}', 'SchoolController@getSchoolGrades');
+    Route::post('/update-actual-price', 'SchoolController@updateActualPrice');
 
     // School Price Limit
     Route::get('/school-price-limit', 'SchoolController@schoolPriceLimit');

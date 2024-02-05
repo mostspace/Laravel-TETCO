@@ -70,6 +70,8 @@ var AdminDashboard = function() {
         $("#discountMatrixTable").on("keydown", ".edit_value", function(event) {
             // Check if the key pressed is Enter (key code 13)
             if (event.keyCode === 13) {
+				// Remove focus from the input field
+				$(this).blur();
                 $.ajax({
                     type: "POST",
                     url: "/update-discount-matrix",
@@ -82,7 +84,7 @@ var AdminDashboard = function() {
                         handleResponse(response);
                     },
                     error: function (error) {
-                        handleAjaxError('Please enter the value accurately.');
+                        handleAjaxError('Please enter the input format correctly.');
                     }
                 });
             }
