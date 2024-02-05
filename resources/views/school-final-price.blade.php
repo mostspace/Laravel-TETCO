@@ -32,9 +32,10 @@
                             <tr>
                                 <th>Educational Level</th>
                                 <th>Grade</th>
-                                <!-- <th>Available Seats</th>
-                                <th>Actual Price</th> -->
-                                <th>Final Price</th>
+                                <th>Available Seats</th>
+                                <th>Actual Price</th>
+                                <th>Final Price for Citizen</th>
+                                <th>Final Price for Non Citizen</th>
                             </tr>
                         </thead>
                     </table>
@@ -58,5 +59,4 @@
 </script>
 
 <script src="{{ asset('assets/js/school-final-price.js') }}"></script>
-
 @endsection

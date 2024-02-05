@@ -14,7 +14,8 @@ use Auth;
 class SchoolController extends Controller
 {
 
-    // Home
+    // =======================================  Home  ===================================================
+
     public function home()
     {
         return view('home');
@@ -42,15 +43,15 @@ class SchoolController extends Controller
                         ->get();
 
         foreach ($grades as $grade) {
-            $grade->final_price = $this->calculateFinalPriceWithVat($grade->level_name, $grade->citizenship_status, $grade->seats);
+            $grade->citizen_final_price = $this->calculateFinalPriceWithVat($grade->level_name, true, $grade->seats);
+            $grade->non_citizen_final_price = $this->calculateFinalPriceWithVat($grade->level_name, false, $grade->seats);
         }
 
         $dataTable = new ServerSideTable($grades);
         $dataTable->getAjaxTable();
     }
 
-
-    // Schools Actual Price
+    // =======================================  Schools Actual Price  ===================================================
 
     public function schoolsActualPrice()
     {
@@ -76,7 +77,7 @@ class SchoolController extends Controller
         $dataTable->getAjaxTable();
     }
 
-    // School Price Limit
+    // =======================================  School Price Limit  ===================================================
 
     public function schoolPriceLimit() {
         return view('school-price-limit.index');
@@ -109,7 +110,7 @@ class SchoolController extends Controller
         }
     }
 
-    // Discount Matrix
+    // =======================================  Discount Matrix  ===================================================
     public function discountMatrix() {
         return view('discount-matrix.index');
     }
@@ -167,7 +168,7 @@ class SchoolController extends Controller
     // }
 
 
-    // Algorithm
+    // =======================================  Caculate Final Price With VAT  ===================================================
 
     public function calculateFinalPriceWithVat($educationalLevel, $isCitizen, $numSeats)
     {
@@ -217,13 +218,13 @@ class SchoolController extends Controller
     }
 
     // Example usage
-    public function exampleUsage()
-    {
-        $educationalLevel = 'Elementary';
-        $isCitizen = false;  // Change to true for citizens
-        $numSeats = 20;
+    // public function exampleUsage()
+    // {
+    //     $educationalLevel = 'Elementary';
+    //     $isCitizen = false;  // Change to true for citizens
+    //     $numSeats = 20;
 
-        $finalPrice = $this->calculateFinalPriceWithVat($educationalLevel, $isCitizen, $numSeats);
-        return $finalPrice;
-    }
+    //     $finalPrice = $this->calculateFinalPriceWithVat($educationalLevel, $isCitizen, $numSeats);
+    //     return $finalPrice;
+    // }
 }

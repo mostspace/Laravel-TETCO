@@ -1,5 +1,5 @@
 "use strict";
-var AdminDashboard = function() {
+var SchoolFinalPrice = function() {
 
 	var initTable1 = function() {
 		var table = $('#gradeTable');
@@ -16,29 +16,17 @@ var AdminDashboard = function() {
 				data: {
 					// parameters for custom backend script demo
 					columnsDef: [
-						'level_name', 'grade', 'final_price'],
+						'level_name', 'grade', 'seats', 'actual_price', 'citizen_final_price', 'non_citizen_final_price'],
 				},
 			},
 			columns: [
 				{data: 'level_name'},
 				{data: 'grade'},
-				// {data: 'seats'},
-				// {data: 'actual_price'},
-				{data: 'final_price'},
-			],
-            columnDefs: [
-				{
-					targets: 2,
-					data: "final_price",
-					render: function(data, type, row, meta) {
-						if(type === 'display') {
-							return row.final_price;
-						} else if (type === 'sort' || type === 'type') {
-							return row.final_price;
-						}
-					}
-				}
-			],
+				{data: 'seats'},
+				{data: 'actual_price'},
+				{data: 'citizen_final_price'},
+				{data: 'non_citizen_final_price'},
+			]
 		});
 	};
 
@@ -47,11 +35,9 @@ var AdminDashboard = function() {
 		init: function() {
 			initTable1();
 		},
-
 	};
-
 }();
 
 jQuery(document).ready(function() {
-	AdminDashboard.init();
+	SchoolFinalPrice.init();
 });
