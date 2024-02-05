@@ -120,6 +120,33 @@ class SchoolController extends Controller
         $dataTable = new ServerSideTable($data);
         $dataTable->getAjaxTable();
     }
+
+    public function updateDiscountMatrix(Request $request) {
+        try {
+            $request->validate([
+                'id' => 'required|numeric',
+                'target' => 'required|string', // Add appropriate validation rules
+                'value' => 'required', // Add appropriate validation rules
+            ]);
+
+            $id = $request->input('id');
+            $target = $request->input('target');
+            $newValue = $request->input('value');
+        
+            // Retrieve the educational level by ID
+            $discountMatrix = DiscountMatrix::find($id);
+    
+            if ($discountMatrix) {
+                // Update the price_limit field
+                $discountMatrix->update([$target => $newValue]);
+        
+                return response()->json(['result' => 'success', 'message' => 'Price limit updated successfully']);
+            }
+            return response()->json(['result' => 'warning', 'message' => 'Educational level not found'], 404);
+        } catch (\Exception $e) {
+            return response()->json(['result' => 'danger', 'message' => 'An error occurred.'], 500);
+        }
+    }
     
 
     // Add Grade

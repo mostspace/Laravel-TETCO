@@ -30,7 +30,7 @@ var AdminDashboard = function() {
 					data: "price_limit",
 					render: function(data, type, row, meta) {
 						if(type === 'display') {
-							return '<input type="text" class="form-control price_limit_value" data-id="' + row.id + '" value="'+  row.price_limit +'"/>';
+							return '<input type="text" class="form-control edit_value" data-id="' + row.id + '" value="'+  row.price_limit +'"/>';
 						} else if (type === 'sort' || type === 'type') {
 							return row.price_limit;
 						}
@@ -56,12 +56,12 @@ var AdminDashboard = function() {
 	};
 
     var initMain = function () {
-        $("#priceLimitTable").on("click", ".price_limit_value", function() {
+        $("#priceLimitTable").on("click", ".edit_value", function() {
             console.log($(this).val());
         });
 
-         // Keydown event handler for elements with class 'price_limit_value'
-        $("#priceLimitTable").on("keydown", ".price_limit_value", function(event) {
+         // Keydown event handler for elements with class 'edit_value'
+        $("#priceLimitTable").on("keydown", ".edit_value", function(event) {
             // Check if the key pressed is Enter (key code 13)
             if (event.keyCode === 13) {
                 $.ajax({

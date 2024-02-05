@@ -16,7 +16,7 @@ var AdminDashboard = function() {
 				data: {
 					// parameters for custom backend script demo
 					columnsDef: [
-						'from', 'to', 'applied_discount'],
+						'id', 'from', 'to', 'applied_discount'],
 				},
 			},
 			columns: [
@@ -26,11 +26,33 @@ var AdminDashboard = function() {
 			],
             columnDefs: [
                 {
+					targets: 0,
+					data: "from",
+					render: function(data, type, row, meta) {
+						if(type === 'display') {
+							return '<input type="text" class="form-control edit_value" data-id="' + row.id + '" data-target="from" value="'+  row.from +'"/>';
+						} else if (type === 'sort' || type === 'type') {
+							return row.from;
+						}
+					}
+				},
+                {
+					targets: 1,
+					data: "applied_discount",
+					render: function(data, type, row, meta) {
+						if(type === 'display') {
+							return '<input type="text" class="form-control edit_value" data-id="' + row.id + '" data-target="to" value="'+  row.to +'"/>';
+						} else if (type === 'sort' || type === 'type') {
+							return row.to;
+						}
+					}
+				},
+                {
 					targets: 2,
 					data: "applied_discount",
 					render: function(data, type, row, meta) {
 						if(type === 'display') {
-							return '<input type="text" class="form-control price_limit_value" data-id="' + row.id + '" value="'+  row.applied_discount +'"/>';
+							return '<input type="text" class="form-control edit_value" data-id="' + row.id + '" data-target="applied_discount" value="'+  row.applied_discount +'"/>';
 						} else if (type === 'sort' || type === 'type') {
 							return row.applied_discount;
 						}
@@ -40,15 +62,35 @@ var AdminDashboard = function() {
 		});
 	};
 
-    // var initMain = function () {
-        
-    // };
+    var initMain = function () {
+        // Keydown event handler for elements with class 'edit_value'
+        $("#discountMatrixTable").on("keydown", ".edit_value", function(event) {
+            // Check if the key pressed is Enter (key code 13)
+            if (event.keyCode === 13) {
+                $.ajax({
+                    type: "POST",
+                    url: "/update-discount-matrix",
+                    data: {
+                        id: $(this).data('id'),
+                        target: $(this).data('target'),
+                        value: $(this).val(),
+                    },
+                    success: function (response) {
+                        handleResponse(response);
+                    },
+                    error: function (error) {
+                        handleAjaxError('Please enter the value accurately.');
+                    }
+                });
+            }
+        });
+    };
 
 	return {
 		//main function to initiate the module
 		init: function() {
 			initTable1();
-			// initMain();
+			initMain();
 		},
 
 	};

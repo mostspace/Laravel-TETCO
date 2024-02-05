@@ -75,9 +75,9 @@ a {
     background-color: #ffffff;
 }
 
-.price_limit_value {
+.edit_value {
     border: none;
 }
-.price_limit_value:focus {
+.edit_value:focus {
     border: 1px solid black;
 }
