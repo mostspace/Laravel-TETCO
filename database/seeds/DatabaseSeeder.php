@@ -3,6 +3,7 @@
 use Illuminate\Database\Seeder;
 use App\User;
 use App\School;
+use App\DiscountMatrix;
 
 class DatabaseSeeder extends Seeder
 {
@@ -35,5 +36,21 @@ class DatabaseSeeder extends Seeder
         foreach ($schools as $name) {
             School::create(['name' => $name]);
         }
+
+        // Seed Discount Matrix
+        $discountMatrixes = [
+            ['from' => 1, 'to' => 10, 'applied_discount' => 10],
+            ['from' => 11, 'to' => 29, 'applied_discount' => 20],
+            ['from' => 30, 'to' => 1000, 'applied_discount' => 30],
+        ];
+
+        foreach($discountMatrixes as $matrix => $data) {
+            DiscountMatrix::factory()->create([
+                'from' => $data['from'],
+                'to' =>$data['to'],
+                'applied_discount' =>$data['applied_discount'],
+            ]);
+        }
+
     }
 }

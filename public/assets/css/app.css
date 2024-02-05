@@ -81,3 +81,7 @@ a {
 .edit_value:focus {
     border: 1px solid black;
 }
+
+#discountMatrixTable_length, #discountMatrixTable_paginate {
+    display: none !important;
+}

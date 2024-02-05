@@ -107,7 +107,7 @@
 						<div id="kt_aside_menu" class="aside-menu mt-4" data-menu-vertical="1" data-menu-scroll="1" data-menu-dropdown-timeout="500">
 							<!--begin::Menu Nav-->
 							<ul class="menu-nav position-relative h-100 pb-0" id="asideMenu">
-								<li class="menu-item" aria-haspopup="true">
+								<li class="menu-item menu-active" aria-haspopup="true">
 									<a href="/home" class="menu-link">
                                        <i class="menu-icon fa-solid fa-house"></i>
 										<span class="menu-text font-weight-bolder">Home</span>

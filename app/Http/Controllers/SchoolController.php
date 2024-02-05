@@ -152,6 +152,7 @@ class SchoolController extends Controller
     }
 
     // =======================================  Discount Matrix  ===================================================
+    
     public function discountMatrix() {
         return view('discount-matrix.index');
     }
@@ -165,11 +166,19 @@ class SchoolController extends Controller
 
     public function updateDiscountMatrix(Request $request) {
         try {
-            $request->validate([
-                'id' => 'required|numeric',
-                'target' => 'required|string', // Add appropriate validation rules
-                'value' => 'required', // Add appropriate validation rules
-            ]);
+            if ($request->input('target') == "from" or $request->input('target') == "to") {
+                $request->validate([
+                    'id' => 'required|numeric',
+                    'target' => 'required|string', // Add appropriate validation rules
+                    'value' => 'required|int', // Add appropriate validation rules
+                ]);
+            } else {
+                $request->validate([
+                    'id' => 'required|int',
+                    'target' => 'required|string',
+                    'value' => 'required|numeric',
+                ]);
+            } 
 
             $id = $request->input('id');
             $target = $request->input('target');
@@ -213,66 +222,31 @@ class SchoolController extends Controller
 
     public function calculateFinalPriceWithVat($baseLimit, $isCitizen, $numSeats)
     {
-
-
-        // Base price limits by educational level, assumed to be VAT-exclusive
-        // $priceLimits = [
-        //     'KG' => 15000,
-        //     'Elementary' => 18000,
-        //     'Intermediate' => 23000,
-        //     'High School' => 26000,
-        // ];
-
-        // Determine the base limit for the given educational level
-        // $baseLimit = $priceLimits[$educationalLevel];
-        // $baseLimit = EducationalLevel::where('level_name', $educationalLevel)->get();
-
         // Discount Rate
         $discountMatrix = DiscountMatrix::all();
-        // dd($discountMatrix[0]['applied_discount']);
 
         // Determine the discount rate based on the number of seats
-        if ($numSeats >= $discountMatrix[0]['from'] && $numSeats <= $discountMatrix[0]['to']) {
-            $discountRate = $discountMatrix[0]['applied_discount'] * 0.01;
-        } elseif ($numSeats >= $discountMatrix[1]['from'] && $numSeats <= $discountMatrix[1]['to']) {
-            $discountRate = $discountMatrix[1]['applied_discount'] * 0.01;
-        } elseif ($numSeats >= $discountMatrix[2]['from']) {
-            $discountRate = $discountMatrix[1]['applied_discount'] * 0.01;
-        } else {
-            $discountRate = 0;  // Default case
+        $discountRate = 0; // Default case
+
+        foreach ($discountMatrix as $discountEntry) {
+            if ($numSeats >= $discountEntry->from && ($numSeats <= $discountEntry->to || is_null($discountEntry->to))) {
+                $discountRate = $discountEntry->applied_discount * 0.01;
+                break;
+            }
         }
 
         // Apply discount to the base limit
         $discountedPrice = $baseLimit * (1 - $discountRate);
 
         // Add VAT for non-Citizens, if applicable
-        if (!$isCitizen) {
-            $priceWithVat = $discountedPrice * 1.15;
-        } else {
-            $priceWithVat = $discountedPrice;
-        }
+        $vatMultiplier = $isCitizen ? 1.0 : 1.15;
+        $priceWithVat = $discountedPrice * $vatMultiplier;
 
         // Enforce the ministry limit strictly for both citizens and non-citizens
         $finalPrice = min($priceWithVat, $baseLimit);
 
-        // return response()->json([
-        //     'educational_level' => $educationalLevel,
-        //     'is_citizen' => $isCitizen,
-        //     'num_seats' => $numSeats,
-        //     'final_price' => number_format($finalPrice, 2),
-        // ]);
-
+        // Format the final price with two decimal places
         return number_format($finalPrice, 2);
     }
 
-    // Example usage
-    // public function exampleUsage()
-    // {
-    //     $educationalLevel = 'Elementary';
-    //     $isCitizen = false;  // Change to true for citizens
-    //     $numSeats = 20;
-
-    //     $finalPrice = $this->calculateFinalPriceWithVat($educationalLevel, $isCitizen, $numSeats);
-    //     return $finalPrice;
-    // }
 }
