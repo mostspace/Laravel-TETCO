@@ -83,8 +83,6 @@ var AdminDashboard = function() {
 		$("#addGrade").click(function(e) {
 			e.preventDefault();
 
-			console.log($("#newGradeForm").serializeJSON());
-
 			$.ajax({
                 type: "POST",
                 url: "/add-grade",
@@ -108,9 +106,7 @@ var AdminDashboard = function() {
 			initTable1();
 			initMain();
 		},
-
 	};
-
 }();
 
 jQuery(document).ready(function() {

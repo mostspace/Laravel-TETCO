@@ -211,9 +211,8 @@ class SchoolController extends Controller
             return response()->json(['result' => 'danger', 'message' => 'An error occurred.'], 500);
         }
     }
-    
 
-    // =======================================  Caculate Final Price With VAT  ===================================================
+    // =======================================  Caculate Final Price With VAT & Discount Rate  ===================================================
 
     public function calculateFinalPriceWithVat($priceLimit, $actualPrice, $isCitizen, $numSeats)
     {

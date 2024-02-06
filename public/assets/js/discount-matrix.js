@@ -68,9 +68,7 @@ var AdminDashboard = function() {
     var initMain = function () {
         // Keydown event handler for elements with class 'edit_value'
         $("#discountMatrixTable").on("keydown", ".edit_value", function(event) {
-            // Check if the key pressed is Enter (key code 13)
             if (event.keyCode === 13) {
-				// Remove focus from the input field
 				$(this).blur();
                 $.ajax({
                     type: "POST",
@@ -97,9 +95,7 @@ var AdminDashboard = function() {
 			initTable1();
 			initMain();
 		},
-
 	};
-
 }();
 
 jQuery(document).ready(function() {
