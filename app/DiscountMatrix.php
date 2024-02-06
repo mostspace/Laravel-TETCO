@@ -9,7 +9,6 @@ class DiscountMatrix extends Model
     protected $table = 'discount_matrix';
 
     protected $fillable = [
-        // other fillable fields...
         'from',
         'to',
         'applied_discount'

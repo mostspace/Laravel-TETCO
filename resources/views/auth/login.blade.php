@@ -5,7 +5,7 @@
 	<head><base href="../../../../">
 		<meta charset="utf-8" />
 		<title>TETCO | Login</title>
-		<meta name="description" content="Login page example" />
+		<meta name="description" content="TETCO Login Page" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
 		<!--begin::Fonts-->
 		<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700" />
@@ -17,12 +17,6 @@
 		<link href="{{ asset('assets/plugins/global/plugins.bundle.css') }}" rel="stylesheet" type="text/css" />
 		<link href="{{ asset('assets/plugins/custom/prismjs/prismjs.bundle.css') }}" rel="stylesheet" type="text/css" />
 		<link href="{{ asset('assets/css/style.bundle.css') }}" rel="stylesheet" type="text/css" />
-		<!--end::Global Theme Styles-->
-		<!--begin::Layout Themes(used by all pages)-->
-		<link href="{{ asset('assets/css/layout/header/base/light.css') }}" rel="stylesheet" type="text/css" />
-		<link href="{{ asset('assets/css/layout/header/menu/light.css') }}" rel="stylesheet" type="text/css" />
-		<link href="{{ asset('assets/css/layout/brand/dark.css') }}" rel="stylesheet" type="text/css" />
-		<link href="{{ asset('assets/css/layout/aside/dark.css') }}" rel="stylesheet" type="text/css" />
 		<link href="{{ asset('assets/css/app.css') }}" rel="stylesheet" type="text/css" />
 		<!--end::Layout Themes-->
 	</head>
@@ -89,20 +83,8 @@
 		<!--end::Global Theme Bundle-->
 		<!--begin::Page Scripts(used by this page)-->
 		<script src="{{ asset('assets/js/login-general.js') }}"></script>
-
 		@yield('add_js')
 		<!--end::Page Scripts-->
-
-		<script>
-			// Override Bootstrap validation messages in Japanese
-			(function ($) {
-				$.extend($.fn.validator.Constructor.DEFAULTS.messages, {
-					required: 'このフィールドは必須です。',
-					// Add more messages for other rules as needed
-				});
-			}(jQuery));
-		</script>
-		
 	</body>
 	<!--end::Body-->
 </html>
