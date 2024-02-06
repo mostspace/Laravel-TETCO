@@ -3,7 +3,8 @@
 namespace App\Utils;
 
 
-require_once(base_path('\app\Utils\class-list-util.php'));
+// require_once(base_path('\app\Utils\class-list-util.php'));
+require_once(app_path('Utils/class-list-util.php'));
 
 class ServerSideTable {
     
