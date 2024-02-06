@@ -19,7 +19,6 @@
                 <div class="card-header">
                     <div class="card-title">
                         <h3 class="card-label">Discount Matrix</h3>
-                        <!-- <p class="">Here you will find the final schools price after the discount.</p> -->
                     </div>
                 </div>
                 <!--end::Card header-->
@@ -50,5 +49,4 @@
 
 @section('add_js')
 <script src="{{ asset('assets/js/discount-matrix.js') }}"></script>
-
 @endsection

@@ -19,7 +19,6 @@
                 <div class="card-header">
                     <div class="card-title">
                         <h3 class="card-label">List of Schools</h3>
-                        <!-- <p class="">Here you will find the final schools price after the discount.</p> -->
                     </div>
                 </div>
                 <!--end::Card header-->
