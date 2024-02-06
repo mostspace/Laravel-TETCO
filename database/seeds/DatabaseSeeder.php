@@ -20,9 +20,9 @@ class DatabaseSeeder extends Seeder
     {
         // Seed Users Table
         DB::table('users')->insert([
-            'name' => 'admin',
-            'email' => 'admin@gmail.com',
-            'password' => Hash::make('adminadmin'),
+            'name' => 'asuayri1',
+            'email' => 'asuayri1@gmail.com',
+            'password' => Hash::make('Aziz@123456'),
         ]);
 
         // Seed School Table
