@@ -13,42 +13,35 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/clear_all', function() {
-    Artisan::call('cache:clear');
-    Artisan::call('config:clear');
-    Artisan::call('config:cache');
-    Artisan::call('view:clear');
-	Artisan::call('route:cache');
-	
-    return "Cache Cleared..!";
-});
+// Redirect root to home
+Route::redirect('/', '/home');
 
-Route::get('/', function () {
-    return redirect('/home');
-});
+// Authentication routes
+Auth::routes(['verify' => true]);
 
-Auth::routes();
-
-Route::middleware(['auth', 'verified'])->group(function() {
+// Authenticated routes
+Route::middleware(['auth', 'verified'])->group(function () {
     // Home
-    Route::get('/home', 'SchoolController@home');
+    Route::get('/home', 'SchoolController@home')->name('home');
+
+    // Schools
     Route::post('/schools-list', 'SchoolController@getSchoolList');
-    Route::get('/school/{school_id}', 'SchoolController@schoolFinalPrice');
-    Route::post('/school/{school_id}', 'SchoolController@getGradeFinalPrice');
+    Route::get('/school/{school_id}', 'SchoolController@schoolFinalPrice')->name('school.final_price');
+    Route::post('/school/{school_id}', 'SchoolController@getGradeFinalPrice')->name('school.grade_final_price');
 
     // Schools Actual Price
     Route::get('/schools-actual-price', 'SchoolController@schoolsActualPrice')->name('school.list');
     Route::get('/schools-actual-price/{school_id}', 'SchoolController@schoolGrades')->name('school.grade');
-    Route::post('/school-grade/{school_id}', 'SchoolController@getSchoolGrades');
-    Route::post('/update-actual-price', 'SchoolController@updateActualPrice');
+    Route::post('/school-grade/{school_id}', 'SchoolController@getSchoolGrades')->name('school.get_grades');
+    Route::post('/update-actual-price', 'SchoolController@updateActualPrice')->name('school.update_actual_price');
 
     // School Price Limit
-    Route::get('/school-price-limit', 'SchoolController@schoolPriceLimit');
-    Route::post('/school-price-limit', 'SchoolController@getSchoolPriceLimit')->name('school.price_limit');
-    Route::post('/update-price-limit', 'SchoolController@updatePriceLimit');
+    Route::get('/school-price-limit', 'SchoolController@schoolPriceLimit')->name('school.price_limit');
+    Route::post('/school-price-limit', 'SchoolController@getSchoolPriceLimit')->name('school.get_price_limit');
+    Route::post('/update-price-limit', 'SchoolController@updatePriceLimit')->name('school.update_price_limit');
 
     // Discount Matrix
-    Route::get('/discount-matrix', 'SchoolController@discountMatrix');
-    Route::post('/discount-matrix', 'SchoolController@getDiscountMatrix');
-    Route::post('/update-discount-matrix', 'SchoolController@updateDiscountMatrix');
+    Route::get('/discount-matrix', 'SchoolController@discountMatrix')->name('school.discount_matrix');
+    Route::post('/discount-matrix', 'SchoolController@getDiscountMatrix')->name('school.get_discount_matrix');
+    Route::post('/update-discount-matrix', 'SchoolController@updateDiscountMatrix')->name('school.update_discount_matrix');
 });
