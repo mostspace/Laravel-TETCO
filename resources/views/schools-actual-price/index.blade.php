@@ -110,10 +110,5 @@
 @endsection
 
 @section('add_js')
-<script>
-    $(document).ready(function() {
-        alert("123");
-    });
-</script>
-<!-- <script src="{{ asset('assets/js/schools.js') }}"></script> -->
+<script src="{{ asset('assets/js/schools.js') }}"></script>
 @endsection
