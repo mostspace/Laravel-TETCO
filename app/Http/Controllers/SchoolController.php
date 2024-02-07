@@ -157,6 +157,7 @@ class SchoolController extends Controller
             return response()->json(['result' => 'error', 'message' => 'Failed to delete school: ' . $e->getMessage()], 500);
         }
     }
+    
 
     public function updateSchool(Request $request) {
         try {
