@@ -110,7 +110,12 @@
 <?php $__env->stopSection(); ?>
 
 <?php $__env->startSection('add_js'); ?>
-<script src="<?php echo e(asset('assets/js/schools.js')); ?>"></script>
+<script>
+    $(document).ready(function() {
+        alert("123");
+    });
+</script>
+<!-- <script src="<?php echo e(asset('assets/js/schools.js')); ?>"></script> -->
 <?php $__env->stopSection(); ?>
 
 <?php echo $__env->make('layouts.app', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH D:\Work\Works\Web\Tetco\resources\views/schools-actual-price/index.blade.php ENDPATH**/ ?>
