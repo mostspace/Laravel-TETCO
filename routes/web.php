@@ -38,6 +38,7 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::post('/delete-school', 'SchoolController@deleteSchool')->name('delete.school');
     Route::post('/update-school', 'SchoolController@updateSchool')->name('update.school');
     Route::post('/add-grade', 'SchoolController@addGrade')->name('add.grade');
+    Route::post('/delete-grade', 'SchoolController@deleteGrade')->name('add.grade');
 
     // School Price Limit
     Route::get('/school-price-limit', 'SchoolController@schoolPriceLimit')->name('school.price_limit');

@@ -50,6 +50,7 @@
                                 <th>Grade</th>
                                 <th>Available Seats</th>
                                 <th>Actual Price</th>
+                                <th>Action</th>
                             </tr>
                         </thead>
                     </table>

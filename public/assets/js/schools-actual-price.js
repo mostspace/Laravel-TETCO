@@ -16,7 +16,7 @@ var AdminDashboard = function() {
 				data: {
 					// parameters for custom backend script demo
 					columnsDef: [
-						'id', 'level_name', 'grade', 'seats', 'actual_price'],
+						'id', 'level_name', 'grade', 'seats', 'actual_price', 'id'],
 				},
 			},
 			columns: [
@@ -24,8 +24,20 @@ var AdminDashboard = function() {
 				{data: 'grade'},
 				{data: 'seats'},
 				{data: 'actual_price'},
+				{data: 'id'},
 			],
 			columnDefs: [
+                {
+					targets: 1,
+					data: "grade",
+					render: function(data, type, row, meta) {
+						if(type === 'display') {
+							return '<input type="text" class="form-control edit_value" data-id="' + row.id + '" data-target="grade" value="'+  row.grade +'"/>';
+						} else if (type === 'sort' || type === 'type') {
+							return row.seats;
+						}
+					}
+				},
                 {
 					targets: 2,
 					data: "seats",
@@ -47,6 +59,16 @@ var AdminDashboard = function() {
 							return row.actual_price;
 						}
 					}
+				},
+				{
+					targets: 4,
+					render: function(data, type, full, meta) {
+						return '\
+							<a href="javascript:;" class="btn btn-sm btn-clean btn-icon btn-row-delete" title="Delete" data-id="' + full.id + '">\
+								<i class="la la-trash"></i>\
+							</a>\
+						';
+					},
 				},
 			],
 		});
@@ -89,15 +111,48 @@ var AdminDashboard = function() {
 					school_id: school_id
 				},
                 success: function (response) {
-                    handleResponse(response);
-					setTimeout(function() {
-						window.location.reload();
-					}, 2000);
+					window.location.reload();
                 },
                 error: function (error) {
                     handleAjaxError('Please enter the input format correctly.');
                 }
             });
+		});
+
+		$("#actualPriceTable").on("click", ".btn-row-delete", function() {
+			var grade_id = $(this).data('id');
+
+			Swal.fire({
+				title: "Are you sure?",
+				text: "You won't be able to revert this!",
+				icon: "warning",
+				showCancelButton: true,
+				confirmButtonText: "Yes, delete it!",
+				cancelButtonText: "No, cancel!",
+				reverseButtons: true
+			}).then(function(result) {
+				if (result.value) {
+					$.ajax({
+						url: "/delete-grade",
+						type: "post",
+						data: {
+							id: grade_id,
+						},
+						success: function (response) {
+							Swal.fire(
+								"Deleted!",
+								"The grade has been deleted.",
+								"success"
+							).then(function(result) {
+								window.location.reload();
+							});
+						},
+						error: function (error) {
+							handleAjaxError('Failed to delete grade.');
+						}
+					});
+				} 
+			});
 		});
 	}
 

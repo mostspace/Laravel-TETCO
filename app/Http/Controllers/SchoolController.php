@@ -93,7 +93,7 @@ class SchoolController extends Controller
 
     public function updateActualPrice(Request $request) {
         try {
-            if ($request->input('target') == "seats") {
+            if ($request->input('target') == "seats" || $request->input('target') == "grade") {
                 $request->validate([
                     'id' => 'required|int',
                     'target' => 'required|string',
@@ -118,6 +118,8 @@ class SchoolController extends Controller
 
                 if ($target == "seats") {
                     $message = 'Available seats updated successfully.';
+                } elseif ($target == "grade") {
+                    $message = 'The grade updated successfully.';
                 } else {
                     $message = 'Actual price updated successfully.';
                 }
@@ -203,6 +205,16 @@ class SchoolController extends Controller
             return response()->json(['result' => 'success', 'message' => 'Successfully added']);
         } catch (\Exception $e) {
             return response()->json(['result' => 'error', 'message' => 'Failed to add grade: ' . $e->getMessage()], 500);
+        }
+    }
+
+    public function deleteGrade(Request $request) {
+        try {
+            $grade = Grade::find($request->input('id'));
+            $grade->delete();
+            return response()->json(['result' => 'success', 'message' => 'Successfully deleted']);
+        } catch (\Exception $e) {
+            return response()->json(['result' => 'error', 'message' => 'Failed to delete grade: ' . $e->getMessage()], 500);
         }
     }
     
