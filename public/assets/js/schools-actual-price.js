@@ -81,8 +81,6 @@ var AdminDashboard = function() {
 
 		// Add actual price and available seats
 		$("#addGrade").click(function(e) {
-			e.preventDefault();
-
 			$.ajax({
                 type: "POST",
                 url: "/add-grade",
@@ -92,6 +90,9 @@ var AdminDashboard = function() {
 				},
                 success: function (response) {
                     handleResponse(response);
+					setTimeout(function() {
+						window.location.reload();
+					}, 2000);
                 },
                 error: function (error) {
                     handleAjaxError('Please enter the input format correctly.');

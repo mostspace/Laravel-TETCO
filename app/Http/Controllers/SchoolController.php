@@ -157,7 +157,7 @@ class SchoolController extends Controller
             return response()->json(['result' => 'error', 'message' => 'Failed to delete school: ' . $e->getMessage()], 500);
         }
     }
-    
+
 
     public function updateSchool(Request $request) {
         try {
@@ -169,6 +169,43 @@ class SchoolController extends Controller
             return response()->json(['result' => 'error', 'message' => 'Failed to update school: ' . $e->getMessage()], 500);
         }
     }
+
+    public function addGrade(Request $request) {
+        try {
+            $grade = new Grade;
+    
+            // Switch statement should be corrected
+            switch ($request->input('data')['edu_level']) {
+                case "KG":
+                    $grade->edu_level = 1;
+                    break; // Add break statement after each case
+                case "Elementary":
+                    $grade->edu_level = 2;
+                    break;
+                case "Intermediate":
+                    $grade->edu_level = 3;
+                    break;
+                case "High School":
+                    $grade->edu_level = 4;
+                    break;
+                default:
+                    $grade->edu_level = 1;
+                    break;
+            }
+    
+            // Assign other properties
+            $grade->school_id = $request->input('school_id');
+            $grade->grade = $request->input('data')['grade'];
+            $grade->seats = $request->input('data')['seats'];
+            $grade->actual_price = $request->input('data')['actual_price'];
+    
+            $grade->save();
+            return response()->json(['result' => 'success', 'message' => 'Successfully added']);
+        } catch (\Exception $e) {
+            return response()->json(['result' => 'error', 'message' => 'Failed to add grade: ' . $e->getMessage()], 500);
+        }
+    }
+    
     
     // =======================================  School Price Limit  ===================================================
 
