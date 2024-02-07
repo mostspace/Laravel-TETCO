@@ -83,7 +83,17 @@ class ServerSideTable {
         }
     
         $columnsDefault = [
-            'Actions' => true,
+            'RecordID'     => true,
+            'OrderID'      => true,
+            'Country'      => true,
+            'ShipCity'     => true,
+            'ShipAddress'  => true,
+            'CompanyAgent' => true,
+            'CompanyName'  => true,
+            'ShipDate'     => true,
+            'Status'       => true,
+            'Type'         => true,
+            'Actions'      => true,
         ];
     
         if ( isset( $_REQUEST['columnsDef'] ) && is_array( $_REQUEST['columnsDef'] ) ) {
@@ -175,6 +185,5 @@ class ServerSideTable {
         header('Access-Control-Allow-Headers: Content-Type, Content-Range, Content-Disposition, Content-Description');
     
         echo json_encode( $result, JSON_PRETTY_PRINT | JSON_UNESCAPED_SLASHES);
-    }
-    
+    } 
 }

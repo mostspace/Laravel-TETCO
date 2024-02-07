@@ -175,3 +175,7 @@ a {
 #kt_aside_toggle svg path {
     fill: #1e776a !important;
 }
+
+.swal2-styled.swal2-confirm {
+  background-color: #1e776a !important;
+}

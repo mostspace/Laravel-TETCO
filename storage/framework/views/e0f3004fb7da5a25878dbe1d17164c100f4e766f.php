@@ -24,7 +24,7 @@
                     </div>
                     <div class="card-toolbar">
                         <!--begin::Button-->
-                        <a href="#" class="btn btn-primary bg-main font-weight-bolder">
+                        <a href="#" class="btn btn-primary bg-main font-weight-bolder" data-toggle="modal" data-target="#dataModal">
                         <span class="svg-icon svg-icon-md">
                             <!--begin::Svg Icon | path:assets/media/svg/icons/Design/Flatten.svg-->
                             <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
@@ -86,20 +86,17 @@
                             <option>High School</option>
                         </select>
                     </div>
-
                     <div class="form-group">
                         <label>Grade</label>
                         <input type="number" class="form-control" placeholder="Enter Grade..." name="grade" />
                     </div>
-
                     <div class="form-group">
                         <label>Actual Price</label>
-                        <input type="text" class="form-control" placeholder="Enter available seats" name="actual_price" />
+                        <input type="text" class="form-control" placeholder="Enter actual price..." name="actual_price" />
                     </div>
-
                     <div class="form-group">
                         <label>Available Seats</label>
-                        <input type="number" class="form-control" placeholder="Enter available seats" name="seats" />
+                        <input type="number" class="form-control" placeholder="Enter available seats..." name="seats" />
                     </div>
                 </form>
             </div>
@@ -111,18 +108,12 @@
     </div>
 </div>
 <!--end::Modal-->
-
 <?php $__env->stopSection(); ?>
 
 <?php $__env->startSection('add_js'); ?>
 <script type="text/javascript">
     var school_id = <?php echo json_encode($school_id, 15, 512) ?>;
 </script>
-
 <script src="<?php echo e(asset('assets/js/schools-actual-price.js')); ?>"></script>
 <?php $__env->stopSection(); ?>
-
-
-Sorry but, just 10 min
-
 <?php echo $__env->make('layouts.app', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH D:\Work\Works\Web\Tetco\resources\views/schools-actual-price/actual-price.blade.php ENDPATH**/ ?>

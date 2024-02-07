@@ -37,6 +37,7 @@
                             <tr>
                                 <th>ID</th>
                                 <th>Name</th>
+                                <th>Actions</th>
                             </tr>
                         </thead>
                     </table>
@@ -79,6 +80,33 @@
 </div>
 <!--end::Modal-->
 
+<!--begin::Modal-->
+<div class="modal fade" id="editModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalSizeXl" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-md" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Update School</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <i aria-hidden="true" class="ki ki-close"></i>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form id="newSchoolFrom">
+                    <div class="form-group">
+                        <label>School Name</label>
+                        <input type="text" id="updateSchool" class="form-control" placeholder="" name="school" />
+                        <input type="hidden" id="updateSchoolId"/>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" id="updateSchoolBtn" class="btn btn-primary bg-main font-weight-bold">Update School</button>
+                <button type="button" class="btn btn-light-primary font-weight-bold" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!--end::Modal-->
 @endsection
 
 @section('add_js')

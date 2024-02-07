@@ -147,6 +147,27 @@ class SchoolController extends Controller
             return response()->json(['result' => 'error', 'message' => 'Failed to add school: ' . $e->getMessage()], 500);
         }
     }
+
+    public function deleteSchool(Request $request) {
+        try {
+            $school = School::find($request->input('id'));
+            $school->delete();
+            return response()->json(['result' => 'success', 'message' => 'Successfully deleted']);
+        } catch (\Exception $e) {
+            return response()->json(['result' => 'error', 'message' => 'Failed to delete school: ' . $e->getMessage()], 500);
+        }
+    }
+
+    public function updateSchool(Request $request) {
+        try {
+            $school = School::find($request->input('school_id'));
+            $school->school_name = $request->input('school_name');
+            $school->save();
+            return response()->json(['result' => 'success', 'message' => 'Successfully updated']);
+        } catch (\Exception $e) {
+            return response()->json(['result' => 'error', 'message' => 'Failed to update school: ' . $e->getMessage()], 500);
+        }
+    }
     
     // =======================================  School Price Limit  ===================================================
 
