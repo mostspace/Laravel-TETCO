@@ -1,12 +1,12 @@
-@extends('layouts.app')
 
-@section('bread_crumb')
+
+<?php $__env->startSection('bread_crumb'); ?>
 <!--begin::Page Title-->
 <h5 class="text-dark font-weight-bolder mt-2 mb-2 mr-5 font-white">Schools Actual Price</h5>
 <!--end::Page Title-->
-@endsection
+<?php $__env->stopSection(); ?>
 
-@section('content')
+<?php $__env->startSection('content'); ?>
 <!--begin::Content-->
 <div class="content d-flex flex-column flex-column-fluid" id="kt_content">  
     <!--begin::Entry-->
@@ -79,8 +79,10 @@
 </div>
 <!--end::Modal-->
 
-@endsection
+<?php $__env->stopSection(); ?>
 
-@section('add_js')
-<script src="{{ asset('assets/js/schools.js') }}"></script>
-@endsection
+<?php $__env->startSection('add_js'); ?>
+<script src="<?php echo e(asset('assets/js/schools.js')); ?>"></script>
+<?php $__env->stopSection(); ?>
+
+<?php echo $__env->make('layouts.app', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH D:\Work\Works\Web\Tetco\resources\views/schools-actual-price/index.blade.php ENDPATH**/ ?>

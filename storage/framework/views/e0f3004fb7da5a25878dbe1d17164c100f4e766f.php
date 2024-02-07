@@ -1,12 +1,12 @@
-@extends('layouts.app')
 
-@section('bread_crumb')
+
+<?php $__env->startSection('bread_crumb'); ?>
 <!--begin::Page Title-->
 <h5 class="text-dark font-weight-bolder mt-2 mb-2 mr-5 font-white">Actual Price</h5>
 <!--end::Page Title-->
-@endsection
+<?php $__env->stopSection(); ?>
 
-@section('content')
+<?php $__env->startSection('content'); ?>
 
 <!--begin::Content-->
 <div class="content d-flex flex-column flex-column-fluid" id="kt_content">  
@@ -19,7 +19,8 @@
                 <!--begin::Card header-->
                 <div class="card-header flex-wrap border-0 pt-6 pb-0">
                     <div class="card-title">
-                        <h3 class="card-label">{{ $school->name }}
+                        <h3 class="card-label"><?php echo e($school->name); ?>
+
                     </div>
                     <div class="card-toolbar">
                         <!--begin::Button-->
@@ -111,15 +112,17 @@
 </div>
 <!--end::Modal-->
 
-@endsection
+<?php $__env->stopSection(); ?>
 
-@section('add_js')
+<?php $__env->startSection('add_js'); ?>
 <script type="text/javascript">
-    var school_id = @json($school_id);
+    var school_id = <?php echo json_encode($school_id, 15, 512) ?>;
 </script>
 
-<script src="{{ asset('assets/js/schools-actual-price.js') }}"></script>
-@endsection
+<script src="<?php echo e(asset('assets/js/schools-actual-price.js')); ?>"></script>
+<?php $__env->stopSection(); ?>
 
 
 Sorry but, just 10 min
+
+<?php echo $__env->make('layouts.app', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH D:\Work\Works\Web\Tetco\resources\views/schools-actual-price/actual-price.blade.php ENDPATH**/ ?>

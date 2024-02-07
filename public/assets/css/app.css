@@ -78,6 +78,14 @@ body {
     font-size: 12px !important;
 }
 
+.btn:hover {
+  color: white !important;
+}
+
+.page-link:hover {
+  color: white !important;
+}
+
 .login-right-bg {
     background-image: url('../media/img/login-bg.png');
     background-repeat: no-repeat;

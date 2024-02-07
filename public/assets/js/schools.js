@@ -40,8 +40,30 @@ var AdminDashboard = function() {
 	};
 
 	var initMain = function () {
-		$("#schoolTable").on("click", "td:nth-child(2)", function() {
-		
+		$("#dataModal").on("click", "#addSchool", function() {
+			if ($("#schoolName").val() !== '') {
+				addNewSchool();
+			}
+		});
+	}
+	
+	var addNewSchool = function () {
+		$.ajax({
+			url: "/add-new-school",
+			type: "post",
+			data: {
+				data: $("#newSchoolFrom").serializeJSON(),
+			},
+			success: function (response) {
+				handleResponse(response);
+				$("#dataModal").modal('hide');
+				setTimeout(function() {
+					window.location.reload();
+				}, 2000);
+			},
+			error: function (error) {
+				handleAjaxError('Please enter the school name correctly.');
+			}
 		});
 	}
 
