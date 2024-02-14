@@ -1,5 +1,5 @@
 First Page: ( Login)
-There will not be a sign up in this tool , only predefined users will login
+There will not be a sign up in this tool , only predefined users will login.
 
 So the first database need to be created is the database of the users which will have:
 Name:
@@ -7,10 +7,7 @@ Email:
 Password:
  
 Second Page:
- 
-
 The second page need to be created is the landing page of the app which will contain the following :
-
  
 Third Page ( Home):
 This is will present the list of schools that has been added before and all grades that the school has and the final price for each grade … like a table
@@ -144,133 +141,7 @@ Use the minimum of the calculated price and the base limit as the final price.
 Outputs
 Final Negotiated Price: The calculated price that adheres to the ministry limit, including any discounts and VAT adjustments.
 
-Pseudocode
-function calculateFinalPrice(educationalLevel, isCitizen, numSeats) {
-    baseLimit = getPriceLimit(educationalLevel)
-    discountRate = getDiscountRate(numSeats)
-    discountedPrice = baseLimit * (1 - discountRate)
-    
-    if not isCitizen {
-        priceWithVAT = min(discountedPrice, baseLimit) * 1.15
-    } else {
-        priceWithVAT = discountedPrice
-    }
-    
-    finalPrice = min(priceWithVAT, baseLimit)
-    return finalPrice
-}
-
-function getPriceLimit(educationalLevel) {
-    // Return the price limit based on the educational level
-}
-
-function getDiscountRate(numSeats) {
-    // Return the discount rate based on the number of seats offered
-}
-
 Notes
-This algorithm ensures fairness and compliance with our guidelines by strictly applying the price limit for both citizens and non-citizens.
+The algorithm ensures fairness and compliance with our guidelines by strictly applying the price limit for both citizens and non-citizens.
 The calculation sequence carefully considers discounts and VAT adjustments to ensure the final price does not exceed the established limit.
 It provides a clear, step-by-step procedure for developers to implement the required functionality in the negotiation tool, ensuring that all financial calculations align with the provided guidelines and constraints.
-
-
-
-
- 
-Sample Data
-
-School A:
-Grade 1:
-Actual price is 18,000
-Available seats is 12
-
-The final price will be:
-Citizen: $14,400
-Non-Citizen: $15,000 (capped at the limit we set and that we can not go above)
-The final price will be : 14,400
-Because we applied the discount which is 20% then we compared it with the limit price that we have and we took the smaller number of them both 
-
-School B:
-Grade 1:
-Actual price is 16,000
-Available seats is 8
-The final price will be:
-Citizen: $14,400
-Non-Citizen: $15,000 (capped at the limit we set and that we can not go above)
-
-School C :
-Grade 1:
-Actual price is 13,000
-Available seats is 21
-The final price will be:
-Citizen: $10,400
-Non-Citizen: Approximately $11,960 (but does not exceed the limit due to discount application)
-
-School D :
-Grade 1:
-Actual price is 18,000
-Available seats is 35
-The final price will be:
-Citizen: $12,600
-Non-Citizen: Approximately $14,490 (but does not exceed the limit due to discount application)
-
-School E:
-Grade 1:
-Actual price is 15,000
-Available seats is 5
-The final price will be:
-Citizen: $13,500
-Non-Citizen: $15,000 (capped at the limit we set and that we can not go above)
-
-
-School F:
-Grade 1:
-Actual price is 20,000
-Available seats is 21
-The final price will be:
-Both Citizen and Non-Citizen: $15,000 (capped at the limit that we set for non-citizens, and the discount brings the citizen price to the limit)
- 
-Sample of the code in python:
-def calculate_final_price_with_vat(educational_level, is_Citizen, num_seats):
-    # Base price limits by educational level, assumed to be VAT-exclusive
-    price_limits = {
-        'KG': 15000,
-        'Elementary': 18000,
-        'Intermediate': 23000,
-        'High School': 26000
-    }
-    
-    # Determine the base limit for the given educational level
-    base_limit = price_limits[educational_level]
-
-    # Determine the discount rate based on the number of seats
-    if num_seats >= 1 and num_seats <= 10:
-        discount_rate = 0.10
-    elif num_seats >= 11 and num_seats <= 29:
-        discount_rate = 0.20
-    elif num_seats >= 30:
-        discount_rate = 0.30
-    else:
-        discount_rate = 0  # Default case
-
-    # Apply discount to the base limit
-    discounted_price = base_limit * (1 - discount_rate)
-
-    # Add VAT for non-Citizens, if applicable
-    if not is_Citizen:
-        price_with_vat = discounted_price * 1.15
-    else:
-        price_with_vat = discounted_price
-
-    # Enforce the ministry limit strictly for both citizens and non-citizens
-    final_price = min(price_with_vat, base_limit)
-
-    return final_price
-
-# Example usage
-educational_level = 'Elementary'
-is_Citizen = False  # Change to True for citizens
-num_seats = 20
-
-final_price = calculate_final_price_with_vat(educational_level, is_Citizen, num_seats)
-print(f"Final Price for {educational_level}, {'Citizen' if is_Citizen else 'Non-Citizen'}: {final_price:.2f} Dollar")
