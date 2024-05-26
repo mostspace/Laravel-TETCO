@@ -145,13 +145,3 @@ Notes
 The algorithm ensures fairness and compliance with our guidelines by strictly applying the price limit for both citizens and non-citizens.
 The calculation sequence carefully considers discounts and VAT adjustments to ensure the final price does not exceed the established limit.
 It provides a clear, step-by-step procedure for developers to implement the required functionality in the negotiation tool, ensuring that all financial calculations align with the provided guidelines and constraints.
-
-
-#comment
-https://drive.google.com/file/d/1eN5xEPWVu2S-BTc6zVFz8cQSMv6pCgf5/view
-https://drive.google.com/file/d/1bE9zf5g8RELm6IyCTkc6-UjdN1obuFj8/view?usp=sharing
-https://drive.google.com/file/d/1zr3FjeucEXH5EEeJLZXemJxui7yeJrTD/view?usp=sharing
-https://drive.google.com/file/d/1FaoUKGuNWvLdzDU7uClF1js5YL5XWuDe/view?usp=sharing
-https://drive.google.com/file/d/17hivjPZDeDbRuSzJIMR7riKX8887Mlog/view?usp=sharing
-https://drive.google.com/file/d/1GehcIW85zn_J2WiWkQASPy-GRsQxcIl1/view?usp=sharing
-https://drive.google.com/file/d/1u6w8B-x9gd9k_HM1D7kuLXfoPSbHoONe/view?usp=sharing
